@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-12T13:31:05.052Z</updated>
+  <updated>2021-01-13T14:48:23.265Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,85 +17,186 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test3</title>
-    <link href="http://example.com/2021/01/12/test3/"/>
-    <id>http://example.com/2021/01/12/test3/</id>
-    <published>2021-01-12T13:29:31.000Z</published>
-    <updated>2021-01-12T13:31:05.052Z</updated>
+    <title>st无法显示emoji问题</title>
+    <link href="http://example.com/2021/01/13/st%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAemoji%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2021/01/13/st%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAemoji%E9%97%AE%E9%A2%98/</id>
+    <published>2021-01-13T14:44:05.000Z</published>
+    <updated>2021-01-13T14:48:23.265Z</updated>
     
-    <content type="html"><![CDATA[<pre><code class="hljs plain">code block</code></pre><p><img src="/chuanblog.github.io/images/arrow.png"></p>]]></content>
+    <content type="html"><![CDATA[<ul><li><a href="#%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E">问题说明</a></li><li><a href="#%E5%AE%89%E8%A3%85emoji%E6%94%AF%E6%8C%81%E5%AD%97%E4%BD%93">安装emoji支持字体</a></li><li><a href="#%E9%85%8D%E7%BD%AEst">配置st</a></li><li><a href="#%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85">重新编译安装</a></li></ul><h2 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h2><p>问题是由于dwm和st以来的xft出现bug导致的，arch平台可以安装<code>libxft-bgra</code>补丁来修复xft的bug，ubuntu解决此问题不太容易，只能等libxft更新。<br>本文基于ubuntu 20.04,采用迂回战术解决此问题。</p><h2 id="安装emoji支持字体"><a href="#安装emoji支持字体" class="headerlink" title="安装emoji支持字体"></a>安装emoji支持字体</h2><pre><code class="hljs plain">sudo apt install fonts-symbola</code></pre><h2 id="配置st"><a href="#配置st" class="headerlink" title="配置st"></a>配置st</h2><p>安装<a href="https://st.suckless.org/patches/font2/">font2补丁</a>,此处不介绍补丁安装方式。</p><p>修改<code>config.h</code>文件:</p><!-- ![st配置](st-symbola.png) --><img src="/chuanblog.github.io/2021/01/13/st%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAemoji%E9%97%AE%E9%A2%98/st-symbola.png" class=""><h2 id="重新编译安装"><a href="#重新编译安装" class="headerlink" title="重新编译安装"></a>重新编译安装</h2><p>重新编译安装dwm和st即可。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;code block&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;/chuanblog.github.io/images/arrow.png&quot;&gt;&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E&quot;&gt;问题说明&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%AE%89%E8%A3%85emoji%E6%94%AF%E6%8C%81%E5%AD%97%E4%B</summary>
       
     
     
     
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="st" scheme="http://example.com/tags/st/"/>
     
   </entry>
   
   <entry>
-    <title>图片测试</title>
-    <link href="http://example.com/2021/01/12/test2/"/>
-    <id>http://example.com/2021/01/12/test2/</id>
-    <published>2021-01-12T12:07:41.000Z</published>
-    <updated>2021-01-12T13:20:47.487Z</updated>
+    <title>zsh安装文档</title>
+    <link href="http://example.com/2021/01/13/zsh%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/"/>
+    <id>http://example.com/2021/01/13/zsh%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</id>
+    <published>2021-01-13T14:40:26.000Z</published>
+    <updated>2021-01-13T14:41:12.057Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/chuanblog.github.io/images/arrow.png"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="zsh安装"><a href="#zsh安装" class="headerlink" title="zsh安装"></a>zsh安装</h2><pre><code class="hljs plain">sudo apt install zsh</code></pre><h2 id="切换默认shell"><a href="#切换默认shell" class="headerlink" title="切换默认shell"></a>切换默认shell</h2><pre><code class="hljs plain">chsh -s /bin/zsh</code></pre><h2 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh my zsh"></a>安装oh my zsh</h2><pre><code class="hljs plain">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zshln -s ~/Desktop/sys-config/.zshrc ~/.zshrc</code></pre><h2 id="安装autojump"><a href="#安装autojump" class="headerlink" title="安装autojump"></a>安装autojump</h2><pre><code class="hljs plain">wget https://github.com/downloads/joelthelion/autojump/autojump_v21.1.2.tar.gz</code></pre><p>解压，运行其中<code>./install.sh</code></p><p>完。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/chuanblog.github.io/images/arrow.png&quot;&gt;&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;h2 id=&quot;zsh安装&quot;&gt;&lt;a href=&quot;#zsh安装&quot; class=&quot;headerlink&quot; title=&quot;zsh安装&quot;&gt;&lt;/a&gt;zsh安装&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;sudo apt install zsh&lt;/code&gt;&lt;/pr</summary>
       
     
     
     
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="zsh" scheme="http://example.com/tags/zsh/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2021/01/12/hello-world/"/>
-    <id>http://example.com/2021/01/12/hello-world/</id>
-    <published>2021-01-12T11:43:32.894Z</published>
-    <updated>2021-01-12T13:29:00.518Z</updated>
+    <title>ranger预览图片问题</title>
+    <link href="http://example.com/2021/01/13/ranger%E9%A2%84%E8%A7%88%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2021/01/13/ranger%E9%A2%84%E8%A7%88%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/</id>
+    <published>2021-01-13T14:38:45.000Z</published>
+    <updated>2021-01-13T14:39:45.100Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<ul><li><a href="#%E9%97%AE%E9%A2%98%E8%AF%A6%E7%BB%86%E6%8F%8F%E8%BF%B0">问题详细描述</a></li><li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案</a><ul><li><a href="#ueberzug%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95">ueberzug安装方法</a></li></ul></li><li><a href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5">相关链接</a></li></ul><h2 id="问题详细描述"><a href="#问题详细描述" class="headerlink" title="问题详细描述"></a>问题详细描述</h2><p>st使用透明补丁之后，会导致ranger无法使用w3m预览图片。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>使用<code>ueberzug</code>代替w3m预览图片。</p><h3 id="ueberzug安装方法"><a href="#ueberzug安装方法" class="headerlink" title="ueberzug安装方法"></a>ueberzug安装方法</h3><p>卸载当前<code>ranger</code>：</p><pre><code class="hljs plain">sudo apt remove ranger</code></pre><p>使用pip3安装<code>ranger</code>:</p><pre><code class="hljs plain">pip3 install ranger-fm</code></pre><p>安装<code>ueberzug</code>:</p><pre><code class="hljs plain">pip3 install ueberzug</code></pre><p>修改<code>ranger</code>的rc.conf:</p><pre><code class="hljs plain">set preview_images_method ueberzug</code></pre><h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://github.com/seebye/ueberzug">ueberzug</a><br><a href="https://github.com/ranger/ranger">ranger</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E9%97%AE%E9%A2%98%E8%AF%A6%E7%BB%86%E6%8F%8F%E8%BF%B0&quot;&gt;问题详细描述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%8</summary>
       
     
     
     
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="ranger" scheme="http://example.com/tags/ranger/"/>
+    
+    <category term="st" scheme="http://example.com/tags/st/"/>
+    
+    <category term="图片预览" scheme="http://example.com/tags/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88/"/>
     
   </entry>
   
   <entry>
-    <title>test</title>
-    <link href="http://example.com/2021/01/11/test/"/>
-    <id>http://example.com/2021/01/11/test/</id>
-    <published>2021-01-11T13:00:01.000Z</published>
-    <updated>2021-01-12T13:26:02.652Z</updated>
+    <title>nerd字体安装文档</title>
+    <link href="http://example.com/2021/01/13/nerd%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/"/>
+    <id>http://example.com/2021/01/13/nerd%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</id>
+    <published>2021-01-13T14:36:55.000Z</published>
+    <updated>2021-01-13T14:37:44.927Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="dog"><a href="#dog" class="headerlink" title="dog"></a>dog</h2><pre><code class="hljs plain">code block</code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="Nerd字体全量安装文档"><a href="#Nerd字体全量安装文档" class="headerlink" title="Nerd字体全量安装文档"></a>Nerd字体全量安装文档</h1><h2 id="clone-Nerd仓库"><a href="#clone-Nerd仓库" class="headerlink" title="clone Nerd仓库"></a>clone Nerd仓库</h2><pre><code class="hljs plain">git clone https://github.com/ryanoasis/nerd-fonts.git</code></pre><h2 id="运行-install-sh文件"><a href="#运行-install-sh文件" class="headerlink" title="运行./install.sh文件"></a>运行<code>./install.sh</code>文件</h2><pre><code class="hljs plain">cd nerd-fontssudo chmod u+x install.sh./install.sh</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="https://github.com/ryanoasis/nerd-fonts">nerd-fonts</a></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;dog&quot;&gt;&lt;a href=&quot;#dog&quot; class=&quot;headerlink&quot; title=&quot;dog&quot;&gt;&lt;/a&gt;dog&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;code block&lt;/code&gt;&lt;/pre&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;Nerd字体全量安装文档&quot;&gt;&lt;a href=&quot;#Nerd字体全量安装文档&quot; class=&quot;headerlink&quot; title=&quot;Nerd字体全量安装文档&quot;&gt;&lt;/a&gt;Nerd字体全量安装文档&lt;/h1&gt;&lt;h2 id=&quot;clone-Nerd仓库&quot;&gt;&lt;a href=&quot;#c</summary>
       
     
     
     
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="nerd字体" scheme="http://example.com/tags/nerd%E5%AD%97%E4%BD%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mutt安装配置文档</title>
+    <link href="http://example.com/2021/01/13/mutt%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/"/>
+    <id>http://example.com/2021/01/13/mutt%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/</id>
+    <published>2021-01-13T14:33:37.000Z</published>
+    <updated>2021-01-13T14:35:35.203Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li><li><a href="#%E4%B8%80%E4%BA%9B%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">一些准备工作</a></li><li><a href="#%E5%AE%89%E8%A3%85mutt-wizard">安装mutt-wizard</a></li><li><a href="#%E9%9C%80%E8%A6%81%E5%85%B3%E6%B3%A8%E7%9A%84%E7%9B%AE%E5%BD%95">需要关注的目录</a></li><li><a href="#%E6%B7%BB%E5%8A%A0%E9%82%AE%E7%AE%B1">添加邮箱</a></li><li><a href="#%E5%90%8C%E6%AD%A5%E9%82%AE%E4%BB%B6">同步邮件</a></li><li><a href="#%E6%89%93%E5%BC%80neomutt">打开neomutt</a></li><li><a href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%BF%AB%E6%8D%B7%E9%94%AE">常用操作快捷键</a></li><li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a><ul><li><a href="#%E5%90%8C%E6%AD%A5%E9%82%AE%E4%BB%B6%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8">同步邮件时出现异常</a></li><li><a href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B9%B1%E7%A0%81">文件夹乱码</a></li><li><a href="#%E5%85%B6%E4%BB%96">其他</a></li></ul></li></ul><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>ubuntu 20.04;</p><p>wm: dwm;</p><p>terminal: st;</p><h2 id="一些准备工作"><a href="#一些准备工作" class="headerlink" title="一些准备工作"></a>一些准备工作</h2><pre><code class="hljs plain">sudo apt install neomutt //客户端主程序sudo apt install curl sudo apt install isync //拉取邮件工具sudo apt install msmtp //发送邮件工具sudo apt install lynx //简单预览htmlsudo apt install abook //通讯录工具sudo apt install urlview //使用浏览器打开邮件中的链接sudo apt install pass //加密邮箱密码工具</code></pre><h2 id="安装mutt-wizard"><a href="#安装mutt-wizard" class="headerlink" title="安装mutt-wizard"></a>安装mutt-wizard</h2><pre><code class="hljs plain">git clone https://github.com/LukeSmithxyz/mutt-wizardcd mutt-wizardsudo make install</code></pre><p>附上项目github地址：<a href="https://github.com/LukeSmithxyz/mutt-wizard">https://github.com/LukeSmithxyz/mutt-wizard</a></p><h2 id="需要关注的目录"><a href="#需要关注的目录" class="headerlink" title="需要关注的目录"></a>需要关注的目录</h2><pre><code class="hljs plain">~/.mbsyncrc            #isync/mbsync配置文件~/.config/mutt/        #mutt配置文件所在目录~/.local/share/mail/   #isync拉取的邮件保存的目录</code></pre><h2 id="添加邮箱"><a href="#添加邮箱" class="headerlink" title="添加邮箱"></a>添加邮箱</h2><p>首先在系统中生成一对密钥对：</p><pre><code class="hljs plain">gpg full-gen-key</code></pre><p>然后加密存储你的邮箱密码:</p><pre><code class="hljs plain">pass init xxxxx@xx.com</code></pre><p>最后开始添加邮箱账户:</p><pre><code class="hljs plain">mw -a xxxxx@xx.com</code></pre><p>以上操作根据提示输入相关内容即可</p><h2 id="同步邮件"><a href="#同步邮件" class="headerlink" title="同步邮件"></a>同步邮件</h2><p>执行以下命令同步邮件:</p><pre><code class="hljs plain">mbsync xxxxx@xx.com</code></pre><h2 id="打开neomutt"><a href="#打开neomutt" class="headerlink" title="打开neomutt"></a>打开neomutt</h2><p>执行如下命令打开neomutt</p><pre><code class="hljs plain">neomutt</code></pre><h2 id="常用操作快捷键"><a href="#常用操作快捷键" class="headerlink" title="常用操作快捷键"></a>常用操作快捷键</h2><p>打开neomutt之后的常用快捷键</p><pre><code class="hljs plain">m 发送邮件j/k 下/上ctrl-j/k 左边导航栏选择文件夹ctrl-o 打开左边导航栏选中的文件夹l 打开邮件，在按一次，将邮件中的内容和附件列成列表查看h 和l相反r 回复邮件ctrl-b 打开邮件之后将邮件中的url列成列表然后可以用浏览器打开i-[1-9] 进入不同的邮箱帐号a 将选中邮件中的联系人存储到联系人列表中，发件时按tab键选择联系人S 执行操作（如将标记为删除的文件删除）? 帮助（其他快捷键都在这里面）</code></pre><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="同步邮件时出现异常"><a href="#同步邮件时出现异常" class="headerlink" title="同步邮件时出现异常"></a>同步邮件时出现异常</h3><pre><code class="hljs plain">C: 0/1  B: 0/0  M: +0/0 *0/0 #0/0  S: +0/0 *0/0 #0/0Error: flattened mailbox name '&amp;UXZO1mWHTvZZOQ-/QQ&amp;kK5O9ouilgU-' contains canonical hierarchy delimiterC: 1/1  B: 0/0  M: +0/0 *0/0 #0/0  S: +0/0 *0/0 #0/0</code></pre><p>打开<code>~/.mbsyncrc</code>,将该邮箱帐号对应频道的的flatten一行注释掉:</p><pre><code class="hljs plain"># flatten .</code></pre><h3 id="文件夹乱码"><a href="#文件夹乱码" class="headerlink" title="文件夹乱码"></a>文件夹乱码</h3><p>将服务端邮箱文件夹改为英文名字（部分邮箱只需要将服务端语言设置为英文即可，部分邮箱不支持修改）。</p><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>可以上这里看看: <a href="https://github.com/LukeSmithxyz/mutt-wizard">https://github.com/LukeSmithxyz/mutt-wizard</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%8E%AF%E5%A2%83&quot;&gt;环境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%B8%80%E4%BA%9B%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C&quot;&gt;一些准备工作&lt;/a&gt;&lt;/li&gt;
+&lt;li</summary>
+      
+    
+    
+    
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="mutt" scheme="http://example.com/tags/mutt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>系统安装初始配置文档</title>
+    <link href="http://example.com/2021/01/13/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/"/>
+    <id>http://example.com/2021/01/13/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/</id>
+    <published>2021-01-13T14:25:21.000Z</published>
+    <updated>2021-01-13T14:43:13.636Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><a href="#deja-dup">deja-dup</a></li><li><a href="#vscode">vscode</a></li><li><a href="#chrome">chrome</a></li><li><a href="#docker">docker</a></li><li><a href="#idea">Idea</a></li><li><a href="#dbeaver">dbeaver</a></li><li><a href="#openjdk11">openJDK11</a></li><li><a href="#sbt">sbt</a></li><li><a href="#u%E7%9B%98%E7%83%A7%E5%BD%95%E5%B7%A5%E5%85%B7">U盘烧录工具</a></li><li><a href="#%E6%88%AA%E5%9B%BE%E5%B7%A5%E5%85%B7">截图工具</a></li><li><a href="#vlc%E6%92%AD%E6%94%BE%E5%99%A8">VLC播放器</a></li><li><a href="#node%E7%8E%AF%E5%A2%83">node环境</a></li><li><a href="#node%E5%AE%89%E8%A3%85%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%9B%B4%E6%96%B0%E5%91%BD%E4%BB%A4%E5%A6%82vue-cli">node安装的软件包更新命令(如vue-cli)</a></li><li><a href="#%E5%AE%89%E8%A3%85vue-cli">安装vue-cli</a></li><li><a href="#virtualbox">virtualbox</a></li><li><a href="#htop%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8">htop资源管理器</a></li><li><a href="#sensors-cpu%E6%B8%A9%E5%BA%A6%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7">sensors cpu温度监控工具</a></li><li><a href="#emacs">emacs</a></li><li><a href="#%E8%BE%93%E5%85%A5%E6%B3%95">输入法</a></li><li><a href="#atool">atool</a></li><li><a href="#%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%98">双系统时间不一致问题</a></li></ul><p>软件安装前首先执行<code>sudo apt update</code>命令。</p><h2 id="deja-dup"><a href="#deja-dup" class="headerlink" title="deja-dup"></a>deja-dup</h2><p>备份工具，用于备份home分区的一些配置文件</p><pre><code class="hljs plain">sudo apt install deja-dup</code></pre><h2 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h2><p>方法1</p><pre><code class="hljs plain">sudo snap install code --classic</code></pre><p>方法2（推荐）</p><pre><code class="hljs plain">sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"sudo apt updatesudo apt install code</code></pre><h2 id="chrome"><a href="#chrome" class="headerlink" title="chrome"></a>chrome</h2><pre><code class="hljs plain">sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -sudo apt-get updatesudo apt-get install google-chrome-stable</code></pre><h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><pre><code class="hljs plain">curl -fsSL get.docker.com -o get-docker.shsudo sh get-docker.sh --mirror Aliyun</code></pre><h2 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h2><pre><code class="hljs plain">sudo snap install intellij-idea-community --classic</code></pre><h2 id="dbeaver"><a href="#dbeaver" class="headerlink" title="dbeaver"></a>dbeaver</h2><p>数据库管理客户端</p><pre><code class="hljs plain">sudo snap install dbeaver-ce --classic</code></pre><h2 id="openJDK11"><a href="#openJDK11" class="headerlink" title="openJDK11"></a>openJDK11</h2><pre><code class="hljs plain">sudo apt install openjdk-11-jdksudo apt install openjdk-11-source</code></pre><h2 id="sbt"><a href="#sbt" class="headerlink" title="sbt"></a>sbt</h2><pre><code class="hljs plain">echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.listcurl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key addsudo apt updatesudo apt-get install sbt</code></pre><h2 id="U盘烧录工具"><a href="#U盘烧录工具" class="headerlink" title="U盘烧录工具"></a>U盘烧录工具</h2><pre><code class="hljs plain">sudo apt install usb-creator-gtk</code></pre><h2 id="截图工具"><a href="#截图工具" class="headerlink" title="截图工具"></a>截图工具</h2><pre><code class="hljs plain">sudo apt install flameshot</code></pre><h2 id="VLC播放器"><a href="#VLC播放器" class="headerlink" title="VLC播放器"></a>VLC播放器</h2><pre><code class="hljs plain">sudo snap install vlc</code></pre><h2 id="node环境"><a href="#node环境" class="headerlink" title="node环境"></a>node环境</h2><pre><code class="hljs plain">curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bashsudo apt install -y nodejs</code></pre><h2 id="node安装的软件包更新命令-如vue-cli"><a href="#node安装的软件包更新命令-如vue-cli" class="headerlink" title="node安装的软件包更新命令(如vue-cli)"></a>node安装的软件包更新命令(如vue-cli)</h2><pre><code class="hljs plain">sudo npm update -g [可更上特定包名，不加就更新所有]</code></pre><h2 id="安装vue-cli"><a href="#安装vue-cli" class="headerlink" title="安装vue-cli"></a>安装vue-cli</h2><pre><code class="hljs plain">sudo npm install -g @vue/cli</code></pre><h2 id="virtualbox"><a href="#virtualbox" class="headerlink" title="virtualbox"></a>virtualbox</h2><pre><code class="hljs plain">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"sudo apt updatesudo apt instal virtualbox-6.1 #年代久远可以尝试输入virtualbox- 然后tab查看最新版本</code></pre><h2 id="htop资源管理器"><a href="#htop资源管理器" class="headerlink" title="htop资源管理器"></a>htop资源管理器</h2><pre><code class="hljs plain">sudo apt install htop</code></pre><h2 id="sensors-cpu温度监控工具"><a href="#sensors-cpu温度监控工具" class="headerlink" title="sensors cpu温度监控工具"></a>sensors cpu温度监控工具</h2><pre><code class="hljs plain">sudo apt install lm-sensors</code></pre><h2 id="emacs"><a href="#emacs" class="headerlink" title="emacs"></a>emacs</h2><pre><code class="hljs plain">sudo apt install emacs</code></pre><h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>安装fcitx输入框架</p><pre><code class="hljs plain">sudo apt install fcitx</code></pre><p>将默认输入框架设置为fcitx</p><pre><code class="hljs plain">im-config # 确定 -》选择fcitx</code></pre><p>安装google拼音输入法</p><pre><code class="hljs plain">sudo apt install fcitx-googlepinyin -y</code></pre><p>配置google拼音输入法</p><pre><code class="hljs plain">fcitx-config-gtk3</code></pre><img src="/chuanblog.github.io/2021/01/13/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/fcitx-config01.png" class=""><img src="/chuanblog.github.io/2021/01/13/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/fcitx-config02.png" class=""><h2 id="atool"><a href="#atool" class="headerlink" title="atool"></a>atool</h2><p>ranger文件解压缩支持工具</p><pre><code class="hljs plain">sudo apt install atool</code></pre><h2 id="双系统时间不一致问题"><a href="#双系统时间不一致问题" class="headerlink" title="双系统时间不一致问题"></a>双系统时间不一致问题</h2><pre><code class="hljs plain">sudo hwclock --localtime --systohc</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#deja-dup&quot;&gt;deja-dup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#vscode&quot;&gt;vscode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#chrome&quot;&gt;chrome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#doc</summary>
+      
+    
+    
+    
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dwm安装文档</title>
+    <link href="http://example.com/2021/01/13/dwm%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/"/>
+    <id>http://example.com/2021/01/13/dwm%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</id>
+    <published>2021-01-13T13:48:37.000Z</published>
+    <updated>2021-01-13T14:22:18.383Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><a href="#%E5%89%8D%E8%A8%80">前言</a></li><li><a href="#%E5%85%B3%E4%BA%8Edwm">关于DWM</a></li><li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a><ul><li><a href="#%E5%9F%BA%E7%A1%80%E4%BE%9D%E8%B5%96">基础依赖</a></li><li><a href="#%E5%90%8E%E6%9C%9F%E5%8A%9F%E8%83%BD%E6%80%A7%E8%BD%AF%E4%BB%B6">后期功能性软件</a></li></ul></li><li><a href="#dwm%E5%AE%89%E8%A3%85">DWM安装</a></li><li><a href="#%E8%AE%BE%E7%BD%AEdwm%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F">设置DWM启动方式</a><ul><li><a href="#%E4%BD%BF%E7%94%A8display-manager%E5%90%AF%E5%8A%A8">使用display manager启动</a></li><li><a href="#%E4%BD%BF%E7%94%A8startx%E5%91%BD%E4%BB%A4%E4%BB%8E%E6%96%87%E5%AD%97%E7%95%8C%E9%9D%A2%E5%90%AF%E5%8A%A8%E6%8E%A8%E8%8D%90">使用startx命令从文字界面启动(推荐)</a></li></ul></li><li><a href="#%E4%B8%BA%E8%BD%AF%E4%BB%B6%E6%8C%87%E5%AE%9A%E6%89%93%E5%BC%80%E6%A0%87%E7%AD%BE">为软件指定打开标签</a></li><li><a href="#%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98">可能遇到的问题</a><ul><li><a href="#%E7%8A%B6%E6%80%81%E6%A0%8F%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAemoji">状态栏无法显示emoji</a></li></ul></li></ul><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本教程直接使用本人配置好的DWM，建议新手直接使用我的配置，等上手之后在在行下载官方源码进行编译安装配置。</p><h2 id="关于DWM"><a href="#关于DWM" class="headerlink" title="关于DWM"></a>关于DWM</h2><p>可以看B站CW大佬的<a href="https://www.bilibili.com/video/BV11J411t7RY">视频</a></p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="基础依赖"><a href="#基础依赖" class="headerlink" title="基础依赖"></a>基础依赖</h3><pre><code class="hljs plain">$ sudo apt-get install suckless-tools libx11-dev libxft-dev libxinerama-dev gcc make</code></pre><h3 id="后期功能性软件"><a href="#后期功能性软件" class="headerlink" title="后期功能性软件"></a>后期功能性软件</h3><p>透明配置支持</p><pre><code class="hljs plain">$ sudo apt install compton或者用下面的工具$ sudo apt install xcompmgr</code></pre><p>背景图片设置工具</p><pre><code class="hljs plain">$ sudo apt install feh</code></pre><p>电源监控工具</p><pre><code class="hljs plain">$ sudo apt install acpi acpitool</code></pre><p>背光灯调整工具</p><pre><code class="hljs plain">$ sudo apt install light</code></pre><p>为背光灯调整工具设置sudo免密码</p><pre><code class="hljs plain">$ sudo visudo</code></pre><p>然后在文本最后加入如下代码</p><pre><code class="hljs plain">{登录系统的用户名} ALL=NOPASSWD:/usr/bin/light</code></pre><p>安装截图工具</p><pre><code class="hljs plain">$ sudo apt install flameshot</code></pre><p>安装数字键盘工具</p><pre><code class="hljs plain">$ sudo apt install numlockx</code></pre><p>虚拟机可能需要以下软件</p><p>virtualbox</p><pre><code class="hljs plain">$ sudo apt-get install virtualbox-guest-utils virtualbox-guest-X11</code></pre><p>vmware</p><pre><code class="hljs plain">$ sudo apt-get install open-vm-tools open-vm-desktop</code></pre><h2 id="DWM安装"><a href="#DWM安装" class="headerlink" title="DWM安装"></a>DWM安装</h2><p>获取源码</p><pre><code class="hljs plain">$ git clone https://github.com/chuanzhangjiang/dwm.git</code></pre><p>移动到源码目录修改config.h文件，自行修改下图中用户目录名称</p><img src="/chuanblog.github.io/2021/01/13/dwm%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/config_modify.png" class=""><p>获取dwm自定义脚本</p><pre><code class="hljs plain">$ git clone https://github.com/chuanzhangjiang/dwm-script.git</code></pre><p>将脚本文件软链接到<code>～/.dwm</code>目录</p><pre><code class="hljs plain">$ ln -s  ~/dwm-script的目录 ~/.dwm</code></pre><p>移动到dwm源码目录执行安装命令</p><pre><code class="hljs plain">$ sudo make clean install</code></pre><h2 id="设置DWM启动方式"><a href="#设置DWM启动方式" class="headerlink" title="设置DWM启动方式"></a>设置DWM启动方式</h2><p>有两种启动方式可以选择</p><h3 id="使用display-manager启动"><a href="#使用display-manager启动" class="headerlink" title="使用display manager启动"></a>使用display manager启动</h3><p>以ubuntu 20.04为例,ubuntu 20.04使用gdm3做为display manager，配置完成之后可以在登录界面选择dwm作为桌面启动，如下图：</p><img src="/chuanblog.github.io/2021/01/13/dwm%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/desktop_entry.png" class=""><p>具体配置方式，进入<code>/usr/share/xsessions/</code>目录，新建文件<code>dwm.desktop</code>,输入内容：</p><pre><code class="hljs plain">[Desktop Entry]Encoding=UTF-8Name=DwmComment=Dynamic window managerExec=dwmIcon=dwmType=XSession</code></pre><h3 id="使用startx命令从文字界面启动-推荐"><a href="#使用startx命令从文字界面启动-推荐" class="headerlink" title="使用startx命令从文字界面启动(推荐)"></a>使用startx命令从文字界面启动(推荐)</h3><p>此方式开机更加快速，使用更加灵活，系统资源占用更少。</p><p><strong>首先将系统改为默认进入文字界面</strong></p><p>修改grub配置,打开文件<code>/etc/default/grub</code>,将<code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"</code>的改为<code>GRUB_CMDLINE_LINUX_DEFAULT="text"</code>然后执行命令</p><pre><code class="hljs plain">$ sudo update-grub</code></pre><p>将启动等级改为多用户等级，执行如下命令：</p><pre><code class="hljs plain">$ systemctl set-default multi-user.target // 如果想改回启动图形界面执行下面$ systemctl set-default graphical.target</code></pre><p>最后修改<code>~/.xsession</code>文件（如果没有就新建），在最后一行加入</p><pre><code class="hljs plain">exec dwm</code></pre><p>重启电脑，执行startx命令，直接进入dwm，同时也可以执行<code>sudo systemctl start gdm.service</code>命令，打开gdm3的用户登录界面。</p><h2 id="为软件指定打开标签"><a href="#为软件指定打开标签" class="headerlink" title="为软件指定打开标签"></a>为软件指定打开标签</h2><pre><code class="hljs plain">xprop | grep WM_CLASS</code></pre><p>鼠标会变为十字架,用十字架点击想要被指定的软件的打开窗口，terminal就会显示该软件的instance和class:</p><pre><code class="hljs plain">WM_CLASS(STRING) = instance, class</code></pre><p>将信息填入config.h的下列位置:</p><img src="/chuanblog.github.io/2021/01/13/dwm%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/rule.png" class=""><p><code>tags mask</code>用于指定打开的表情序号，一号标签为二进制<code>000000001</code>,二号为<code>000000010</code>,类推。</p><p>重新编译安装即可。<br>完。</p><h2 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h2><h3 id="状态栏无法显示emoji"><a href="#状态栏无法显示emoji" class="headerlink" title="状态栏无法显示emoji"></a>状态栏无法显示emoji</h3><p><strong>问题说明</strong><br>问题是由于dwm和st以来的xft出现bug导致的，arch平台可以安装<code>libxft-bgra</code>补丁来修复xft的bug，其他平台解决此问题不太容易，只能等libxft更新。<br>本文基于ubuntu 20.04,采用迂回战术解决此问题。<br><strong>安装emoji支持字体</strong></p><pre><code class="hljs plain">sudo apt install fonts-symbola</code></pre><p><strong>配置dwm</strong><br>修改dwm的<code>config.h</code>文件：</p><img src="/chuanblog.github.io/2021/01/13/dwm%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/dwm-symbola.png" class=""><p><strong>重新编译安装</strong><br>重新编译安装dwm即可。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%89%8D%E8%A8%80&quot;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%85%B3%E4%BA%8Edwm&quot;&gt;关于DWM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%87%86%E5%A4%87%E5%B</summary>
+      
+    
+    
+    
+    
+    <category term="dwm" scheme="http://example.com/tags/dwm/"/>
+    
+    <category term="系统配置" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   

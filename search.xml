@@ -4,6 +4,94 @@
   
     
     <entry>
+      <title>日常命令手册</title>
+      <link href="/chuanblog.github.io/2021/01/14/%E6%97%A5%E5%B8%B8%E5%91%BD%E4%BB%A4%E6%89%8B%E5%86%8C/"/>
+      <url>/chuanblog.github.io/2021/01/14/%E6%97%A5%E5%B8%B8%E5%91%BD%E4%BB%A4%E6%89%8B%E5%86%8C/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">ubuntu服务器相关常用命令</a></li><li><a href="#docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">docker 常用命令</a></li><li><a href="#mysql%E6%98%93%E5%BF%98%E5%91%BD%E4%BB%A4">mysql易忘命令</a></li><li><a href="#git%E6%98%93%E5%BF%98%E5%91%BD%E4%BB%A4">git易忘命令</a></li></ul><h2 id="ubuntu服务器相关常用命令"><a href="#ubuntu服务器相关常用命令" class="headerlink" title="ubuntu服务器相关常用命令"></a>ubuntu服务器相关常用命令</h2><p>1、使用ssh登录远程服务器</p><pre><code class="hljs plain">ssh {登陆服务器所用的用户名}@{服务器IP地址}</code></pre><h2 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h2><p>1、运行容器</p><pre><code class="hljs plain">sudo docker container start {容器名字}</code></pre><p>2.列出所有容器</p><pre><code class="hljs plain">sudo docker container ls -al</code></pre><p>3.进入正在运行容器的bash界面</p><pre><code class="hljs plain">sudo docker container exec -it {容器名} bash</code></pre><p>4.获取镜像</p><pre><code class="hljs plain">sudo docker pull {镜像名}[:版本号]</code></pre><p>5.运行镜像(运行之后通过镜像生成容器，之后直接运行容器即可)</p><pre><code class="hljs plain">sudo docker run {镜像名}</code></pre><p>6.运行mysql镜像</p><pre><code class="hljs plain">sudo docker run --name {给容器取名} -p {本机端口号}:{docker上的mysql端口号} -e MYSQL_ROOT_PASSWORD={设置mysql登录密码} -d mysql:{TAG}</code></pre><h2 id="mysql易忘命令"><a href="#mysql易忘命令" class="headerlink" title="mysql易忘命令"></a>mysql易忘命令</h2><p>1.进入mysql命令终端</p><pre><code class="hljs plain">mysql -u {用户名} -p</code></pre><h2 id="git易忘命令"><a href="#git易忘命令" class="headerlink" title="git易忘命令"></a>git易忘命令</h2><p>1.创建主仓库</p><pre><code class="hljs plain">git init --bare</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 运维 </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue项目配置文档</title>
+      <link href="/chuanblog.github.io/2021/01/14/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/"/>
+      <url>/chuanblog.github.io/2021/01/14/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">创建项目</a></li><li><a href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE">运行项目</a></li><li><a href="#%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97">安装项目常用模块</a></li><li><a href="#%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98">解决跨域问题</a></li></ul><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><pre><code class="hljs plain">vue create {项目名称}</code></pre><p>选择默认配置</p><h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><pre><code class="hljs plain">npm run serve</code></pre><h2 id="安装项目常用模块"><a href="#安装项目常用模块" class="headerlink" title="安装项目常用模块"></a>安装项目常用模块</h2><p>主要模块</p><pre><code class="hljs plain">npm install axios vue-router vuex node-sass sass-loader vue-axios vue-cookie --save</code></pre><p>可能有用的模块</p><pre><code class="hljs plain">npm install vue-lazyload vue-awesome-swiper --save</code></pre><p>dev安装方式</p><pre><code class="hljs plain">npm install xxx --save-dev</code></pre><h2 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h2><p>这里使用配置代理服务器的方式来转发请求,首先在项目根目录新建<code>vue.config.js</code>，然后输入如下样例配置:</p><pre><code class="hljs plain">module.exports = {    devServer: {        host: 'localhost',        port: 8080,        proxy: {            '/api': {                target: 'http://localhost:9000',                changeOrigin: true,                pathRewrite: {                    '/api': ''                }            }        }    }}</code></pre><p>以上会将项目中如<code>/api/login</code>的链接转换为<code>http://localhost:9000/login</code>，即<code>/api -&gt; http://localhost:9000/</code>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> vue </tag>
+            
+            <tag> 项目配置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>scala编程之play框架使用</title>
+      <link href="/chuanblog.github.io/2021/01/14/scala%E7%BC%96%E7%A8%8B%E4%B9%8Bplay%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/"/>
+      <url>/chuanblog.github.io/2021/01/14/scala%E7%BC%96%E7%A8%8B%E4%B9%8Bplay%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#%E6%96%B0%E5%BB%BAplay%E9%A1%B9%E7%9B%AE">新建play项目</a></li><li><a href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE">运行项目</a></li><li><a href="#%E9%85%8D%E7%BD%AE%E4%BE%9D%E8%B5%96">配置依赖</a></li><li><a href="#%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93mysql">配置数据库(mysql)</a><ul><li><a href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%87%AA%E5%8A%A8%E6%BC%94%E8%BF%9Bevolutions">使用数据库自动演进（evolutions）</a></li><li><a href="#%E4%BD%BF%E7%94%A8slick-codegen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E4%BB%A3%E7%A0%81">使用<code>slick codegen</code>自动生成数据库操作代码</a></li></ul></li><li><a href="#slick%E4%BD%BF%E7%94%A8">slick使用</a><ul><li><a href="#dao%E7%B1%BB%E6%A8%A1%E6%9D%BF">dao类模板</a></li><li><a href="#%E6%9F%A5">查</a></li><li><a href="#%E5%A2%9E">增</a></li></ul></li><li><a href="#csrf%E8%BF%87%E6%BB%A4%E5%99%A8%E9%85%8D%E7%BD%AE">CSRF过滤器配置</a><ul><li><a href="#%E9%85%8D%E7%BD%AEapplicationconf%E6%96%87%E4%BB%B6">配置<code>application.conf</code>文件</a></li><li><a href="#%E5%85%B3%E4%BA%8E%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82">关于前端请求</a></li></ul></li></ul><h2 id="新建play项目"><a href="#新建play项目" class="headerlink" title="新建play项目"></a>新建play项目</h2><pre><code class="hljs plain">sbt new playframework/play-scala-seed.g8</code></pre><h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><p>terminal中运行</p><pre><code class="hljs plain">sbt run</code></pre><p>vscode中运行<br>launch.json文件</p><pre><code class="hljs plain">{    // Use IntelliSense to learn about possible attributes.    // Hover to view descriptions of existing attributes.    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387    "version": "0.2.0",    "configurations": [        {            "type": "scala",            "request": "launch",            "name": "Play main",            "mainClass": "play.core.server.ProdServerStart",            "args": [],            "jvmOptions": []        }    ]}</code></pre><p>application.conf文件添加screatkey</p><pre><code class="hljs plain">play.http.secret.key=${?PLAY_SECREAT_KEY}</code></pre><p><code>~/.bashrc</code>中添加环境变量(如果使用zsh则添加在<code>~/.zshrc</code>中):</p><pre><code class="hljs plain">export PLAY_SECREAT_KEY='QCY?tAnfk?aZ?iwrNwnxIlR6CTf:G3gf:90Latabg@5241AB`R5W:1uDFN];Ik@n'</code></pre><p>刷新.bashrc文件.(关闭所有vscode界面和terminal界面)</p><pre><code class="hljs plain">source .bashrc</code></pre><h2 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h2><p>在build.sbt中添加如下依赖</p><pre><code class="hljs plain">libraryDependencies ++= Seq(  "com.typesafe.play" %% "play-slick" % "5.0.0",  "com.typesafe.play" %% "play-slick-evolutions" % "5.0.0",  "com.typesafe.slick" %% "slick-codegen" % "3.3.3",  "mysql" % "mysql-connector-java" % "5.1.41",  "org.mindrot" % "jbcrypt" % "0.4")</code></pre><h2 id="配置数据库-mysql"><a href="#配置数据库-mysql" class="headerlink" title="配置数据库(mysql)"></a>配置数据库(mysql)</h2><p>在application.conf中添加配置(db.url自行替换):</p><pre><code class="hljs plain"># Default database configurationslick.dbs.default.profile="slick.jdbc.MySQLProfile$"slick.dbs.default.db.driver="com.mysql.jdbc.Driver"slick.dbs.default.db.url="jdbc:mysql://192.168.1.249:3306/seed-store?useSSL=false&amp;characterEncoding=UTF-8"slick.dbs.default.db.user=${?MYSQL_USER}slick.dbs.default.db.password=${?MYSQL_PSD}</code></pre><p>~/.bashrc中添加环境变量:</p><pre><code class="hljs plain">export MYSQL_USER='{用户名}'export MYSQL_PSD='{密码}'</code></pre><p>刷新.bashrc文件.(关闭所有vscode界面和terminal界面)</p><pre><code class="hljs plain">source ~/.bashrc</code></pre><p>配置项目中的logback.xml文件，在<code>&lt;root&gt;</code>节点之前添加以下语句使其能在控制台中显示SQL语句:</p><pre><code class="hljs plain">&lt;logger name="slick.jdbc.JdbcBackend.statement"  level="DEBUG" /&gt;</code></pre><h3 id="使用数据库自动演进（evolutions）"><a href="#使用数据库自动演进（evolutions）" class="headerlink" title="使用数据库自动演进（evolutions）"></a>使用数据库自动演进（evolutions）</h3><p>1.创建如下目录，其中default表示数据库名称（图中为默认数据库）,创建sql文件以1,2,3命名，表示时间先后顺序。</p><!-- ![evolutions](sql_evolutions.png) --><img src="/chuanblog.github.io/2021/01/14/scala%E7%BC%96%E7%A8%8B%E4%B9%8Bplay%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/sql_evolutions.png" class=""><p>2.sql文件样例：</p><p>样例1：</p><pre><code class="hljs plain">-- !UpsDROP TABLE IF EXISTS `user`;CREATE TABLE `user` (    `id` INT AUTO_INCREMENT,    `username` VARCHAR(50) NOT NULL unique,    `password` VARCHAR(50),    `phone_number` VARCHAR(50),    PRIMARY KEY (`id`))ENGINE InnoDB DEFAULT CHARSET=UTF8;-- !DownsDROP TABLE `user`;</code></pre><p>样例2：</p><pre><code class="hljs plain">-- !UpsALTER TABLE `product` ADD CONSTRAINT `prdct_foreign_key_prdct` FOREIGN KEY(`manufacturer_id`)REFERENCES `manufacturer`(`id`);-- !DownsALTER TABLE `product` DROP FOREIGN KEY `prdct_foreign_key_prdct`;</code></pre><p>样例3：</p><pre><code class="hljs plain">-- !UpsCREATE TABLE operator (`id` INT AUTO_INCREMENT,    `username` VARCHAR(50) NOT NULL unique,    `password` VARCHAR(100) NOT NULL,     PRIMARY KEY (`id`))ENGINE InnoDB DEFAULT CHARSET=UTF8;INSERT INTO operator(username, password)VALUES('admin', '$2a$10$D.DPASo7cAvdU9b0URPbY.www8lLK6PkJPQUT/TlWO.S84CYslzZO');-- !DownsDELETE FROM operator where username = 'admin';DROP TABLE operator;</code></pre><p>写好sql之后运行一次项目，然后打开项目网页，会提示运行脚本，运行即可。</p><h3 id="使用slick-codegen自动生成数据库操作代码"><a href="#使用slick-codegen自动生成数据库操作代码" class="headerlink" title="使用slick codegen自动生成数据库操作代码"></a>使用<code>slick codegen</code>自动生成数据库操作代码</h3><p>方法一、在项目中创建一个main方法，每次数据库修改手动运行此main方法：</p><p>在项目源码目录新建scala文件,如下图:</p><!-- ![code_gen](slick_code_gen.png) --><img src="/chuanblog.github.io/2021/01/14/scala%E7%BC%96%E7%A8%8B%E4%B9%8Bplay%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/slick_code_gen.png" class=""><p><code>Codegen.scala</code>文件内容样例如下:</p><pre><code class="hljs plain">import java.io.Fileobject CodeGen extends App {  val dbHost = "localhost:3306"  // val dbHost = "192.168.1.249:3306"  val dbName = "manager-sys-demo"  val dbUserName = System.getenv("MYSQL_USER")  val dbPass = System.getenv("MYSQL_PSD")  val sourceCodeDir = new File("").getAbsolutePath() + File.separator + "app"  slick.codegen.SourceCodeGenerator.main(    Array(      "slick.jdbc.MySQLProfile",      "com.mysql.jdbc.Driver",      s"jdbc:mysql://${dbHost}/${dbName}?useSSL=false&amp;characterEncoding=UTF-8",      sourceCodeDir,      "models",      dbUserName,      dbPass    )  )}</code></pre><p><code>/home/chuanzhangjiang/scala_project/seed-store/app/</code>源码目录,<code>models</code>为源码输出的包，使用里面的<code>Tables</code>对象即可。<br>每次数据库有修改，手动运行<code>Codegen.scala</code>即可。<br>方法二、配置sbt脚本，项目每次编译自动生成<code>Tables</code>对象:<br>修改<code>project</code>目录下的<code>plugins.sbt</code>文件,添加如下内容：</p><pre><code class="hljs plain">addSbtPlugin("com.github.tototoshi" % "sbt-slick-codegen" % "1.4.0")//根据你所使用的数据库而定libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"</code></pre><p>修改<code>build.sbt</code>,添加如下内容:</p><pre><code class="hljs plain">import slick.codegen.SourceCodeGeneratorimport slick.{model =&gt; m}val hosetName = "//localhost:3306"val dbName = "manager-sys-demo"// requiredslickCodegenSettings// required// Register codegen hooksourceGenerators in Compile += slickCodegen.taskValue// required 配置数据库urlslickCodegenDatabaseUrl := s"jdbc:mysql:${hosetName}/${dbName}?useSSL=false&amp;characterEncoding=UTF-8"// required 从环境变量中获取登录数据库的用户名slickCodegenDatabaseUser := System.getenv("MYSQL_USER")// required 从环境变量中获取数据库密码slickCodegenDatabasePassword := System.getenv("MYSQL_PSD")// required slickCodegen数据库驱动,非字符串slickCodegenDriver := slick.jdbc.MySQLProfile// required jdbc驱动,字符串slickCodegenJdbcDriver := "com.mysql.jdbc.Driver"// optional but maybe you want `Tables`对象的包名slickCodegenOutputPackage := "models"//optional Tables.scala输出目录// slickCodegenOutputDir := (sourceManaged in Compile).value// optional 忽略指定表// For example, to exclude play evolutions play_evolutions table from the target of codegen. This still applies after slickCodegenIncludedTables.slickCodegenExcludedTables := Seq("play_evolutions")</code></pre><p>完成以上配置，sbt将在你每次编译项目的时候自动生产<code>Tables</code>对象。</p><p>附上<code>slick-codegen</code>sbt插件项目<a href="https://github.com/tototoshi/sbt-slick-codegen">地址</a>。</p><h2 id="slick使用"><a href="#slick使用" class="headerlink" title="slick使用"></a>slick使用</h2><h3 id="dao类模板"><a href="#dao类模板" class="headerlink" title="dao类模板"></a>dao类模板</h3><pre><code class="hljs plain">import play.api.db.slick.DatabaseConfigProviderimport scala.concurrent.ExecutionContextimport com.google.inject.Injectimport play.api.db.slick.HasDatabaseConfigProviderimport slick.jdbc.JdbcProfileimport scala.concurrent.Futureclass SampleDao @Inject() (    protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext)    extends HasDatabaseConfigProvider[JdbcProfile] {  import profile.api._  // TODO}</code></pre><h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><pre><code class="hljs plain">val query = User.filter(_.email === mEmail).resultdb.run(query)</code></pre><p><code>User</code>对象由<code>CodeGen.scala</code>自动生成，参考系列一。</p><h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><p>情况1:直接新增，返回被修改的行数。</p><pre><code class="hljs plain">def saveUser(newUser: UserRow): Future[Int] = {  val action = User += newUser  db.run(action)}</code></pre><p>情况2:只提供部分列的数据,返回被修改的行数。</p><pre><code class="hljs plain">val action = User.map(user =&gt; (user.username, user.password, user.email)) += (      username,      password,      email    )db.run(action)</code></pre><p>情况3:只提供部分列的数据，返回新增数据的自增id</p><pre><code class="hljs plain">val returnId = User    .map(user =&gt; (user.username, user.password, user.email))    .returning(User.map(_.id))val action = returnId += (    username,    password,    email)</code></pre><p>持续更新中…</p><h2 id="CSRF过滤器配置"><a href="#CSRF过滤器配置" class="headerlink" title="CSRF过滤器配置"></a>CSRF过滤器配置</h2><h3 id="配置application-conf文件"><a href="#配置application-conf文件" class="headerlink" title="配置application.conf文件"></a>配置<code>application.conf</code>文件</h3><p>加入如下行</p><pre><code class="hljs plain">play.filters.csrf.header.bypassHeaders {    X-Requested-With = "*"}</code></pre><h3 id="关于前端请求"><a href="#关于前端请求" class="headerlink" title="关于前端请求"></a>关于前端请求</h3><p>此配置需要在前端请求头中加入<code>X-Requested-With</code>请求头，该请求头的值随意。(有的框架执行ajax请求会自动添加此header，如jquery)</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> scala </tag>
+            
+            <tag> play framework </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>openWRT</title>
+      <link href="/chuanblog.github.io/2021/01/14/openWRT/"/>
+      <url>/chuanblog.github.io/2021/01/14/openWRT/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#openwrt%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C">openWRT配置网络</a></li></ul><h2 id="openWRT配置网络"><a href="#openWRT配置网络" class="headerlink" title="openWRT配置网络"></a>openWRT配置网络</h2><p>文件地址:</p><pre><code class="hljs plain">/etc/config/network</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 网络配置 </tag>
+            
+            <tag> openWRT </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>st无法显示emoji问题</title>
       <link href="/chuanblog.github.io/2021/01/13/st%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAemoji%E9%97%AE%E9%A2%98/"/>
       <url>/chuanblog.github.io/2021/01/13/st%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAemoji%E9%97%AE%E9%A2%98/</url>

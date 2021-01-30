@@ -10,6 +10,8 @@ tags:
 
 ## 前言
 这是备忘录，除非你时间很多，否则不建议你阅读。
+## 宏代码和测试代码不能在同一个编译环境中
+[sbt宏项目](https://www.scala-sbt.org/1.x/docs/Macro-Projects.html)
 ## 定义宏函数
 ``` scala
 import scala.language.experimental.macros //使得函数体可以使用macro做前缀

@@ -1,0 +1,77 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>mutt安装配置文档</title><meta name="description" content="胸无大致，家里蹲！"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><link rel="icon" href="/chuanblog.github.io/images/favicon.ico"><link rel="stylesheet" href="/chuanblog.github.io/style/bulma.css"><link rel="stylesheet" href="/chuanblog.github.io/style/base.css"><link rel="stylesheet" href="/chuanblog.github.io/style/helper.css"><script src="/chuanblog.github.io/js/common.js"></script><link rel="stylesheet" href="/chuanblog.github.io/style/post.css"><link rel="stylesheet" href="/chuanblog.github.io/style/highlight-theme-light.css"><script src="/chuanblog.github.io/jslib/highlight.pack.js"></script><meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/chuanblog.github.io/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-space-between is-hidden-mobile"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/chuanblog.github.io/">chuan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">mutt安装配置文档</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/chuanblog.github.io/">Home</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/about">About</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/archives">Archives</a></h3></aside></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/chuanblog.github.io/">Home</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/about">About</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">一些准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mutt-wizard"><span class="toc-text">安装mutt-wizard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%85%B3%E6%B3%A8%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-text">需要关注的目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%82%AE%E7%AE%B1"><span class="toc-text">添加邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E9%82%AE%E4%BB%B6"><span class="toc-text">同步邮件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80neomutt"><span class="toc-text">打开neomutt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">常用操作快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E9%82%AE%E4%BB%B6%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8"><span class="toc-text">同步邮件时出现异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B9%B1%E7%A0%81"><span class="toc-text">文件夹乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%83%BD%E6%89%BE%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E9%97%AE%E9%A2%98"><span class="toc-text">不能找到文件夹问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/chuanblog.github.io/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><i class="tag post-item-tag">系统配置</i></a><a href="/chuanblog.github.io/tags/mutt"><i class="tag post-item-tag">mutt</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">mutt安装配置文档</h1><time class="has-text-grey" datetime="2021-01-13T14:33:37.000Z">2021-01-13</time><article class="mt-2 post-content"><ul>
+<li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">一些准备工作</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85mutt-wizard">安装mutt-wizard</a></li>
+<li><a href="#%E9%9C%80%E8%A6%81%E5%85%B3%E6%B3%A8%E7%9A%84%E7%9B%AE%E5%BD%95">需要关注的目录</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E9%82%AE%E7%AE%B1">添加邮箱</a></li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E9%82%AE%E4%BB%B6">同步邮件</a></li>
+<li><a href="#%E6%89%93%E5%BC%80neomutt">打开neomutt</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%BF%AB%E6%8D%B7%E9%94%AE">常用操作快捷键</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a><ul>
+<li><a href="#%E5%90%8C%E6%AD%A5%E9%82%AE%E4%BB%B6%E6%97%B6%E5%87%BA%E7%8E%B0%E5%BC%82%E5%B8%B8">同步邮件时出现异常</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B9%B1%E7%A0%81">文件夹乱码</a></li>
+<li><a href="#%E4%B8%8D%E8%83%BD%E6%89%BE%E5%88%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E9%97%AE%E9%A2%98">不能找到文件夹问题</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>ubuntu 20.04;</p>
+<p>wm: dwm;</p>
+<p>terminal: st;</p>
+<h2 id="一些准备工作"><a href="#一些准备工作" class="headerlink" title="一些准备工作"></a>一些准备工作</h2><pre><code class="hljs plain">sudo apt install neomutt //客户端主程序
+sudo apt install curl 
+sudo apt install isync //拉取邮件工具
+sudo apt install msmtp //发送邮件工具
+sudo apt install lynx //简单预览html
+sudo apt install abook //通讯录工具
+sudo apt install urlview //使用浏览器打开邮件中的链接
+sudo apt install pass //加密邮箱密码工具</code></pre>
+<h2 id="安装mutt-wizard"><a href="#安装mutt-wizard" class="headerlink" title="安装mutt-wizard"></a>安装mutt-wizard</h2><pre><code class="hljs plain">git clone https://github.com/LukeSmithxyz/mutt-wizard
+cd mutt-wizard
+sudo make install</code></pre>
+<p>附上项目github地址：<a target="_blank" rel="noopener" href="https://github.com/LukeSmithxyz/mutt-wizard">https://github.com/LukeSmithxyz/mutt-wizard</a></p>
+<h2 id="需要关注的目录"><a href="#需要关注的目录" class="headerlink" title="需要关注的目录"></a>需要关注的目录</h2><pre><code class="hljs plain">~/.mbsyncrc            #isync/mbsync配置文件
+~/.config/mutt/        #mutt配置文件所在目录
+~/.local/share/mail/   #isync拉取的邮件保存的目录</code></pre>
+<h2 id="添加邮箱"><a href="#添加邮箱" class="headerlink" title="添加邮箱"></a>添加邮箱</h2><p>首先在系统中生成一对密钥对：</p>
+<pre><code class="hljs plain">gpg full-gen-key</code></pre>
+<p>然后加密存储你的邮箱密码:</p>
+<pre><code class="hljs plain">pass init xxxxx@xx.com</code></pre>
+<p>最后开始添加邮箱账户:</p>
+<pre><code class="hljs plain">mw -a xxxxx@xx.com</code></pre>
+<p>以上操作根据提示输入相关内容即可</p>
+<h2 id="同步邮件"><a href="#同步邮件" class="headerlink" title="同步邮件"></a>同步邮件</h2><p>执行以下命令同步邮件:</p>
+<pre><code class="hljs plain">mbsync xxxxx@xx.com</code></pre>
+<h2 id="打开neomutt"><a href="#打开neomutt" class="headerlink" title="打开neomutt"></a>打开neomutt</h2><p>执行如下命令打开neomutt</p>
+<pre><code class="hljs plain">neomutt</code></pre>
+<h2 id="常用操作快捷键"><a href="#常用操作快捷键" class="headerlink" title="常用操作快捷键"></a>常用操作快捷键</h2><p>打开neomutt之后的常用快捷键</p>
+<pre><code class="hljs plain">m 发送邮件
+j/k 下/上
+ctrl-j/k 左边导航栏选择文件夹
+ctrl-o 打开左边导航栏选中的文件夹
+l 打开邮件，在按一次，将邮件中的内容和附件列成列表查看
+h 和l相反
+r 回复邮件
+ctrl-b 打开邮件之后将邮件中的url列成列表然后可以用浏览器打开
+i-[1-9] 进入不同的邮箱帐号
+a 将选中邮件中的联系人存储到联系人列表中，发件时按tab键选择联系人
+S 执行操作（如将标记为删除的文件删除）
+? 帮助（其他快捷键都在这里面）</code></pre>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="同步邮件时出现异常"><a href="#同步邮件时出现异常" class="headerlink" title="同步邮件时出现异常"></a>同步邮件时出现异常</h3><pre><code class="hljs plain">C: 0/1  B: 0/0  M: +0/0 *0/0 #0/0  S: +0/0 *0/0 #0/0
+Error: flattened mailbox name '&amp;UXZO1mWHTvZZOQ-/QQ&amp;kK5O9ouilgU-' contains canonical hierarchy delimiter
+C: 1/1  B: 0/0  M: +0/0 *0/0 #0/0  S: +0/0 *0/0 #0/0</code></pre>
+<p>打开<code>~/.mbsyncrc</code>,将该邮箱帐号对应频道的的flatten一行注释掉:</p>
+<pre><code class="hljs plain"># flatten .</code></pre>
+<h3 id="文件夹乱码"><a href="#文件夹乱码" class="headerlink" title="文件夹乱码"></a>文件夹乱码</h3><p>将服务端邮箱文件夹改为英文名字（部分邮箱只需要将服务端语言设置为英文即可，部分邮箱不支持修改）。</p>
+<h3 id="不能找到文件夹问题"><a href="#不能找到文件夹问题" class="headerlink" title="不能找到文件夹问题"></a>不能找到文件夹问题</h3><p>问题截图如下:</p>
+<img src="/chuanblog.github.io/2021/01/13/mutt%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/cant_found_folder.png" class="">
+
+<p>问题原因：文件夹名字中存在空格</p>
+<p>解决方案：转意空格，如下图：</p>
+<img src="/chuanblog.github.io/2021/01/13/mutt%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/cant_found_folder2.png" class="">
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>可以上这里看看: <a target="_blank" rel="noopener" href="https://github.com/LukeSmithxyz/mutt-wizard">https://github.com/LukeSmithxyz/mutt-wizard</a></p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-small is-default py-4" href="/chuanblog.github.io/2021/01/13/nerd%E5%AD%97%E4%BD%93%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/" title="nerd字体安装文档"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: nerd字体安装文档</span></a><a class="button is-small is-default py-4" href="/chuanblog.github.io/2021/01/13/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/" title="系统安装初始配置文档"><span class="has-text-weight-semibold">Next: 系统安装初始配置文档</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="chuanzhangjiang/chuanblog.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/chuanzhangjiang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/zhang-chuan-72-58"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> chuan 2022</span></p><div class="is-flex"><p>Powered by Hexo｜</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by &nbspHaojen&nbsp</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/chuanblog.github.io/js/post.js"></script></body></html>

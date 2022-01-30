@@ -1,0 +1,140 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>scala宏笔记</title><meta name="description" content="胸无大致，家里蹲！"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><link rel="icon" href="/chuanblog.github.io/images/favicon.ico"><link rel="stylesheet" href="/chuanblog.github.io/style/bulma.css"><link rel="stylesheet" href="/chuanblog.github.io/style/base.css"><link rel="stylesheet" href="/chuanblog.github.io/style/helper.css"><script src="/chuanblog.github.io/js/common.js"></script><link rel="stylesheet" href="/chuanblog.github.io/style/post.css"><link rel="stylesheet" href="/chuanblog.github.io/style/highlight-theme-light.css"><script src="/chuanblog.github.io/jslib/highlight.pack.js"></script><meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/chuanblog.github.io/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-space-between is-hidden-mobile"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/chuanblog.github.io/">chuan's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">scala宏笔记</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/chuanblog.github.io/">Home</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/about">About</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/archives">Archives</a></h3></aside></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/chuanblog.github.io/">Home</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/about">About</a></h3><h3 class="is-inline-block"><a href="/chuanblog.github.io/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F%E4%BB%A3%E7%A0%81%E5%92%8C%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E4%B8%8D%E8%83%BD%E5%9C%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E4%B8%AD"><span class="toc-text">宏代码和测试代码不能在同一个编译环境中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%AE%8F%E5%87%BD%E6%95%B0"><span class="toc-text">定义宏函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ETree"><span class="toc-text">关于Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">方法调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-text">参数传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E8%A1%A8%E7%A4%BA"><span class="toc-text">常量表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA"><span class="toc-text">变量表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%AE%8F%E9%80%9F%E6%9F%A5"><span class="toc-text">写宏速查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BC%A0%E5%85%A5%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">获取传入类型参数的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%98%AF%E5%90%A6%E6%98%AFcase%E7%B1%BB%E5%9E%8B"><span class="toc-text">判断一个类是否是case类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%BC%B4%E7%94%9F%E5%AF%B9%E8%B1%A1%E5%AF%B9%E5%BA%94%E7%9A%84symbol"><span class="toc-text">获取某个类的伴生对象对应的symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%BB%E6%9E%84%E9%80%A0%E5%85%B6symbol"><span class="toc-text">获取某个类的主构造其symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-text">获取方法的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">获取方法中的参数是否存在默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%80%E7%B1%BB%E7%9A%84%E6%89%80%E6%9C%89%E6%88%90%E5%91%98"><span class="toc-text">获取某一类的所有成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E4%B8%AD%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">获取方法中参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8q%E6%9E%84%E9%80%A0AST%E6%97%B6%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-text">使用q构造AST时，需要传入参数类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E4%B8%80%E4%B8%AA%E7%B1%BB"><span class="toc-text">构造一个类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%89%8D%E7%BC%80c-prefix"><span class="toc-text">获取前缀c.prefix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8F%92%E5%80%BC%E5%99%A8"><span class="toc-text">定义字符串插值器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%BC%82%E5%B8%B8"><span class="toc-text">主动提示异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E7%82%B9"><span class="toc-text">最后一点</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/chuanblog.github.io/tags/scala"><i class="tag post-item-tag">scala</i></a><a href="/chuanblog.github.io/tags/%E5%AE%8F"><i class="tag post-item-tag">宏</i></a><a href="/chuanblog.github.io/tags/%E7%BC%96%E7%A8%8B"><i class="tag post-item-tag">编程</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">scala宏笔记</h1><time class="has-text-grey" datetime="2021-01-29T06:59:25.000Z">2021-01-29</time><article class="mt-2 post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是备忘录，除非你时间很多，否则不建议你阅读。</p>
+<h2 id="宏代码和测试代码不能在同一个编译环境中"><a href="#宏代码和测试代码不能在同一个编译环境中" class="headerlink" title="宏代码和测试代码不能在同一个编译环境中"></a>宏代码和测试代码不能在同一个编译环境中</h2><p><a target="_blank" rel="noopener" href="https://www.scala-sbt.org/1.x/docs/Macro-Projects.html">sbt宏项目</a></p>
+<h2 id="定义宏函数"><a href="#定义宏函数" class="headerlink" title="定义宏函数"></a>定义宏函数</h2><pre><code class="hljs scala"><span class="hljs-keyword">import</span> scala.language.experimental.macros <span class="hljs-comment">//使得函数体可以使用macro做前缀</span>
+<span class="hljs-keyword">import</span> scala.reflect.macros.whitebox.<span class="hljs-type">Context</span> <span class="hljs-comment">//宏所需的环境</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MacroTest</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTest</span></span>(input: <span class="hljs-type">String</span>): <span class="hljs-type">Unit</span> = macro macroTestImpl
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTestImpl</span></span>(c: <span class="hljs-type">Context</span>)(input: c.<span class="hljs-type">Tree</span>): c.<span class="hljs-type">Tree</span> = {
+    <span class="hljs-keyword">import</span> c.universe._
+    <span class="hljs-string">q"println(<span class="hljs-subst">$input</span>)"</span>
+  }
+}</code></pre>
+<p>宏函数<code>macroTest</code>调用了他的实现<code>macroTestImpl</code>,<code>macroTestImpl</code>格式需要注意两点，参数<code>c: Context</code>必须作为地一个参数传入，独占一个括号;第二个括号中的参数必须和宏函数<code>macroTest</code>的第一个括号中的参数一一对应，对应原则：参数名必须相同，参数类型统一替换为<code>c.Tree</code>(c.Expr[_]的情况暂不讨论)。</p>
+<p>下面是几种定义样例</p>
+<pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MacroTest</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTest</span></span>[<span class="hljs-type">T</span>](input: <span class="hljs-type">String</span>, input2: <span class="hljs-type">Any</span>): <span class="hljs-type">T</span> = macro macroTestImpl[<span class="hljs-type">T</span>]
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTestImpl</span></span>[<span class="hljs-type">T</span>: c.<span class="hljs-type">WeakTypeTag</span>](
+      c: <span class="hljs-type">Context</span>
+  )(input: c.<span class="hljs-type">Tree</span>, input2: c.<span class="hljs-type">Tree</span>): c.<span class="hljs-type">Tree</span> = {
+    <span class="hljs-keyword">import</span> c.universe._
+    ???
+  }
+}</code></pre>
+<pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MacroTest</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTest</span></span>(input: <span class="hljs-type">String</span>*): <span class="hljs-type">Unit</span> = macro macroTestImpl
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTestImpl</span></span>(
+      c: <span class="hljs-type">Context</span>
+  )(input: c.<span class="hljs-type">Tree</span>*): c.<span class="hljs-type">Tree</span> = {
+    <span class="hljs-keyword">import</span> c.universe._
+    ???
+  }
+}</code></pre>
+<pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MacroTest</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTest</span></span>(input: <span class="hljs-type">String</span>)(input2: <span class="hljs-type">String</span>): <span class="hljs-type">Unit</span> = macro macroTestImpl
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTestImpl</span></span>(
+      c: <span class="hljs-type">Context</span>
+  )(input: c.<span class="hljs-type">Tree</span>)(input2: c.<span class="hljs-type">Tree</span>): c.<span class="hljs-type">Tree</span> = {
+    <span class="hljs-keyword">import</span> c.universe._
+    ???
+  }
+}</code></pre>
+<h2 id="关于Tree"><a href="#关于Tree" class="headerlink" title="关于Tree"></a>关于<code>Tree</code></h2><h3 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h3><p><code>a.b</code>相当于对应<code>Select（a, b）</code></p>
+<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><p><code>a(b)</code>相当于<code>Apply(a, List(b))</code></p>
+<h3 id="常量表示"><a href="#常量表示" class="headerlink" title="常量表示"></a>常量表示</h3><p><code>Literal(Constant("hello"))</code></p>
+<h3 id="变量表示"><a href="#变量表示" class="headerlink" title="变量表示"></a>变量表示</h3><p><code>TermName("a")</code></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>可以使用<code>showRaw</code>方法打赢<code>q</code>插值器的内容查看各种对应关系。</p>
+<h2 id="写宏速查"><a href="#写宏速查" class="headerlink" title="写宏速查"></a>写宏速查</h2><h3 id="获取传入类型参数的类型"><a href="#获取传入类型参数的类型" class="headerlink" title="获取传入类型参数的类型"></a>获取传入类型参数的类型</h3><pre><code class="hljs scala"><span class="hljs-keyword">val</span> t: c.<span class="hljs-type">WeakTypeTag</span>[<span class="hljs-type">T</span>] = implicitly[c.<span class="hljs-type">WeakTypeTag</span>[<span class="hljs-type">T</span>]]</code></pre>
+<h3 id="判断一个类是否是case类型"><a href="#判断一个类是否是case类型" class="headerlink" title="判断一个类是否是case类型"></a>判断一个类是否是case类型</h3><p>使用<code>ClassSymbol.isCaseClass</code>,比如从<code>t: c.WeakTypeTag[T]</code>中获取该类型是否是caseClass：</p>
+<pre><code class="hljs scala">t.tpe.typeSymbol.asClass.isCaseClass</code></pre>
+<h3 id="获取某个类的伴生对象对应的symbol"><a href="#获取某个类的伴生对象对应的symbol" class="headerlink" title="获取某个类的伴生对象对应的symbol"></a>获取某个类的伴生对象对应的symbol</h3><p>使用<code>ClassSymbol.companion</code>,比如从<code>t: c.WeakTypeTag[T]</code>中获取该类对应的伴生对象:</p>
+<pre><code class="hljs scala">t.tpe.typeSymbol.asClass.companion</code></pre>
+<h3 id="获取某个类的主构造其symbol"><a href="#获取某个类的主构造其symbol" class="headerlink" title="获取某个类的主构造其symbol"></a>获取某个类的主构造其symbol</h3><p>使用<code>ClassSymbol.primaryConstructor</code>,比如从<code>t: c.WeakTypeTag[T]</code>中获取该类对应的主构造器:</p>
+<pre><code class="hljs scala">t.tpe.typeSymbol.asClass.primaryConstructor</code></pre>
+<h3 id="获取方法的参数"><a href="#获取方法的参数" class="headerlink" title="获取方法的参数"></a>获取方法的参数</h3><p>使用<code>MethodSymbol.paramLists</code></p>
+<h3 id="获取方法中的参数是否存在默认值"><a href="#获取方法中的参数是否存在默认值" class="headerlink" title="获取方法中的参数是否存在默认值"></a>获取方法中的参数是否存在默认值</h3><p>使用<code>TermSymbol.isParamWithDefault</code>,如将<code>t: c.WeakTypeTag[T]</code>的主构造器中存在默认值的参数的名字存入List中返回回来：</p>
+<pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MacroTest</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTest</span></span>[<span class="hljs-type">T</span>]: <span class="hljs-type">List</span>[<span class="hljs-type">String</span>] = macro macroTestImpl[<span class="hljs-type">T</span>]
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">macroTestImpl</span></span>[<span class="hljs-type">T</span>: c.<span class="hljs-type">WeakTypeTag</span>](c: <span class="hljs-type">Context</span>): c.<span class="hljs-type">Tree</span> = {
+    <span class="hljs-keyword">import</span> c.universe._
+    <span class="hljs-keyword">val</span> t = implicitly[c.<span class="hljs-type">WeakTypeTag</span>[<span class="hljs-type">T</span>]]
+    <span class="hljs-keyword">val</span> defaultParamNameList =
+      t.tpe.typeSymbol.asClass.primaryConstructor.asMethod.paramLists.flatten
+        .filter(_.asTerm.isParamWithDefault)
+        .map(_.asTerm.name.toString())
+    <span class="hljs-string">q""</span><span class="hljs-string">"</span>
+<span class="hljs-string">    List(..$defaultParamNameList)</span>
+<span class="hljs-string">    "</span><span class="hljs-string">""</span>
+  }
+}</code></pre>
+<p>使用</p>
+<pre><code class="hljs scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Main</span> </span>{
+  <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>(<span class="hljs-params">normal1: <span class="hljs-type">String</span>, default: <span class="hljs-type">String</span> = "a", default2: <span class="hljs-type">Int</span> = 2</span>)</span>
+<span class="hljs-class">  <span class="hljs-title">def</span> <span class="hljs-title">main</span>(<span class="hljs-params">args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]</span>)</span>: <span class="hljs-type">Unit</span> = {
+    println(<span class="hljs-type">MacroTest</span>.macroTest[<span class="hljs-type">A</span>])
+  }
+}</code></pre>
+<p>输出结果</p>
+<pre><code class="hljs plain">List(default, default2)</code></pre>
+<h3 id="获取某一类的所有成员"><a href="#获取某一类的所有成员" class="headerlink" title="获取某一类的所有成员"></a>获取某一类的所有成员</h3><p><code>Type.members</code>,如获取<code>t: c.WeakTypeTag[T]</code>中的所有成员:</p>
+<pre><code class="hljs scala">t.tpe.members</code></pre>
+<h3 id="获取方法中参数的默认值"><a href="#获取方法中参数的默认值" class="headerlink" title="获取方法中参数的默认值"></a>获取方法中参数的默认值</h3><p>获取默认参数值的方法命名规则：</p>
+<pre><code class="hljs plain">//类中可以拿到
+&lt;方法名&gt;$default$&lt;参数下标&gt;</code></pre>
+<p>对于case类中，主构造函数中的默认参数方法命名规则：</p>
+<pre><code class="hljs plain">// 需要在伴生对象中拿到
+$lessinit$greater$default$&lt;参数下标&gt;</code></pre>
+<h3 id="使用q构造AST时，需要传入参数类型"><a href="#使用q构造AST时，需要传入参数类型" class="headerlink" title="使用q构造AST时，需要传入参数类型"></a>使用<code>q</code>构造AST时，需要传入参数类型</h3><p>可以直接使用<code>t: c.WeakTypeTag[T]</code>:</p>
+<pre><code class="hljs plain">q"def foo[$t]:$t = bar"</code></pre>
+<p>也可以使用<code>Type</code>类型</p>
+<pre><code class="hljs plain">q"def foo[${t.tpe}]: ${t.tpe} = bar"</code></pre>
+<h3 id="构造一个类"><a href="#构造一个类" class="headerlink" title="构造一个类"></a>构造一个类</h3><p>直接使用伴生对象:</p>
+<pre><code class="hljs plain">q"$companion(..$args)"</code></pre>
+<p>或者使用老朋友<code>t: c.WeakTypeTag[T]</code>：</p>
+<pre><code class="hljs plain">q"new $t(..$args)"</code></pre>
+<h3 id="获取前缀c-prefix"><a href="#获取前缀c-prefix" class="headerlink" title="获取前缀c.prefix"></a>获取前缀<code>c.prefix</code></h3><p>比如存在：</p>
+<pre><code class="hljs plain">class Foo[T] {
+  def bar = macro ???
+}</code></pre>
+<p>那么：</p>
+<pre><code class="hljs plain">new Foo[String].bar</code></pre>
+<p>的<code>c.prefix.tree</code>就是<code>new Foo[String]</code>,就相当于点的左边。</p>
+<h3 id="定义字符串插值器"><a href="#定义字符串插值器" class="headerlink" title="定义字符串插值器"></a>定义字符串插值器</h3><pre><code class="hljs scala"><span class="hljs-keyword">implicit</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestStringContext</span>(<span class="hljs-params">sc: <span class="hljs-type">StringContext</span></span>) </span>{
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span></span>(args: <span class="hljs-type">Any</span>*): <span class="hljs-type">String</span> = ???
+}</code></pre>
+<p>使用</p>
+<pre><code class="hljs scala"><span class="hljs-keyword">val</span> a = ???
+<span class="hljs-string">test"hello <span class="hljs-subst">$a</span>"</span>
+<span class="hljs-comment">// 相当与</span>
+<span class="hljs-keyword">val</span> a = ???
+<span class="hljs-keyword">new</span> <span class="hljs-type">TestStringContext</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">StringContext</span>(<span class="hljs-string">"hello"</span>, <span class="hljs-string">""</span>)).test(a)</code></pre>
+<h3 id="主动提示异常"><a href="#主动提示异常" class="headerlink" title="主动提示异常"></a>主动提示异常</h3><pre><code class="hljs scala">c.error(c.enclosingPosition, <span class="hljs-string">"异常提示"</span>)
+<span class="hljs-type">EmptyTree</span></code></pre>
+<h3 id="最后一点"><a href="#最后一点" class="headerlink" title="最后一点"></a>最后一点</h3><p>别害怕，print大法好，哪里有疑问print哪里:</p>
+<pre><code class="hljs scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">defaultParamValues</span></span>[<span class="hljs-type">T</span>]: <span class="hljs-type">Map</span>[<span class="hljs-type">String</span>, _] = macro defaultParamValuesImpl[<span class="hljs-type">T</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">defaultParamValuesImpl</span></span>[<span class="hljs-type">T</span>: c.<span class="hljs-type">WeakTypeTag</span>](c: <span class="hljs-type">Context</span>): c.<span class="hljs-type">Tree</span> = {
+    <span class="hljs-keyword">import</span> c.universe._
+    <span class="hljs-keyword">val</span> t = implicitly[c.<span class="hljs-type">WeakTypeTag</span>[<span class="hljs-type">T</span>]]
+    <span class="hljs-string">q""</span><span class="hljs-string">"</span>
+<span class="hljs-string">    println(${showRaw(t)})</span>
+<span class="hljs-string">    ???</span>
+<span class="hljs-string">    "</span><span class="hljs-string">""</span>
+  }</code></pre>
+<p><code>showRaw</code>太看不清楚就加个<code>toString</code></p>
+<pre><code class="hljs scala">println(${showRaw(t.toString)})</code></pre>
+<p><code>toString</code>不准确就去掉它。</p>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-small is-default py-4" href="/chuanblog.github.io/2021/02/01/scala%E5%AE%8F%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/" title="scala宏学习文档"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: scala宏学习文档</span></a><a class="button is-small is-default py-4" href="/chuanblog.github.io/2021/01/14/%E6%97%A5%E5%B8%B8%E5%91%BD%E4%BB%A4%E6%89%8B%E5%86%8C/" title="日常命令手册"><span class="has-text-weight-semibold">Next: 日常命令手册</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="chuanzhangjiang/chuanblog.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/chuanzhangjiang"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><a title="zhihu" target="_blank" rel="noopener nofollow" href="//zhihu.com/people/zhang-chuan-72-58"><i class="iconfont icon-zhihu"></i></a><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> chuan 2022</span></p><div class="is-flex"><p>Powered by Hexo｜</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by &nbspHaojen&nbsp</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/chuanblog.github.io/js/post.js"></script></body></html>

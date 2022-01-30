@@ -1,0 +1,39 @@
+# main menu navigation
+menu:
+  Home: /
+  About: /about
+  Archive: /archives
+
+widgets:
+  - tag
+  - archive
+  - recent_posts
+  - category
+
+# social config
+social:
+  zhihu: people/zhang-chuan-72-58
+  # twitter: /
+  # facebook: /
+  # linkedin:
+  # instagram: /
+  github: chuanzhangjiang
+
+user:
+  name: chuan
+  avatar: /images/avater.jpg
+  location: 云南
+  description: 胸无大致，家里蹲！
+
+# documents: https://github.com/utterance/utterances
+# API config: https://utteranc.es/
+comment_utteranc:
+  enable: true
+  repo: chuanzhangjiang/chuanblog.github.io # your blog repo
+
+# dark
+# light
+# user-can-set
+appearance: auto # Default value is auto
+
+favicon: /chuanblog.github.io/images/favicon.ico

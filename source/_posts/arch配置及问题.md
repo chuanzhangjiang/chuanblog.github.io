@@ -93,6 +93,7 @@ $ sudo make clean install
 ```
 $ yay -S wal
 ```
+将~/.xprofile中的`setbg &`改为`setbg`, 使得dwm也启用主题配色。
 **note: 修改背景图片，使用lf选中对应图片，按b。**
 
 ## 使用自己修改过的dwm

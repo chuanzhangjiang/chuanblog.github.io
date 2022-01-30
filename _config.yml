@@ -104,5 +104,5 @@ theme: hexo-theme-Claudia
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://github.com/chuanzhangjiang/chuanblog.github.io
+  repository: git@github.com:chuanzhangjiang/chuanblog.github.io.git
   branch: gh-pages

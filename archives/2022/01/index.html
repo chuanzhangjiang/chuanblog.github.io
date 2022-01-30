@@ -6,6 +6,8 @@
 清理缓存$ pacman -Sc
 在~/.config目录下创建不备份目录列表$ emacs ~/.config/exclude
 加入如下内容
+/home/*
+/boot/*
 /proc/*
 /dev/*
 /sys/*
@@ -19,7 +21,7 @@
 /var/cache/pacman/pkg/*
 /lost+found
 备份命令将根分区备份到home分区中的backup/root-backup.tgz中：
-$ sudo tar --use-compress-program=pigz -cvpf ~/backup/root-..</p><a class="tag read-more-btn is-medium mt-2" href="/chuanblog.github.io/2022/01/30/arch%E7%B3%BB%E7%BB%9F%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/chuanblog.github.io/tags/arch"><i class="tag post-item-tag">arch</i></a><a href="/chuanblog.github.io/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><i class="tag post-item-tag">系统配置</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/chuanblog.github.io/2022/01/29/arch%E9%85%8D%E7%BD%AE%E5%8F%8A%E9%97%AE%E9%A2%98/">arch配置及问题</a></h2><time class="has-text-grey" datetime="2022-01-29T12:56:12.000Z">2022-01-29</time><p class="is-flex-grow-2 mt-2">
+$ sudo tar --use-compress-program=pigz -cvp..</p><a class="tag read-more-btn is-medium mt-2" href="/chuanblog.github.io/2022/01/30/arch%E7%B3%BB%E7%BB%9F%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F/">Read more</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/chuanblog.github.io/tags/arch"><i class="tag post-item-tag">arch</i></a><a href="/chuanblog.github.io/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><i class="tag post-item-tag">系统配置</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/chuanblog.github.io/2022/01/29/arch%E9%85%8D%E7%BD%AE%E5%8F%8A%E9%97%AE%E9%A2%98/">arch配置及问题</a></h2><time class="has-text-grey" datetime="2022-01-29T12:56:12.000Z">2022-01-29</time><p class="is-flex-grow-2 mt-2">
 安装及网络配置
 桌面环境
 安装nerd字体

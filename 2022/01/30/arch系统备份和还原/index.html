@@ -6,7 +6,9 @@
 <h2 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h2><pre><code class="hljs plain">$ pacman -Sc</code></pre>
 <h2 id="在-config目录下创建不备份目录列表"><a href="#在-config目录下创建不备份目录列表" class="headerlink" title="在~/.config目录下创建不备份目录列表"></a>在<code>~/.config</code>目录下创建不备份目录列表</h2><pre><code class="hljs plain">$ emacs ~/.config/exclude</code></pre>
 <p>加入如下内容</p>
-<pre><code class="hljs plain">/proc/*
+<pre><code class="hljs plain">/home/*
+/boot/*
+/proc/*
 /dev/*
 /sys/*
 /tmp/*

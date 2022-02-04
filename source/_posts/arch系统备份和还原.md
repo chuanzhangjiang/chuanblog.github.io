@@ -7,7 +7,7 @@ tags:
 ---
 
 ## 前言
-只备份根分区, home分区直接将重要文件拷贝下来即可。
+只备份根分区和boot分区,home分区直接将重要文件拷贝下来即可。
 
 ## 安装pigz
 ```
@@ -19,12 +19,13 @@ $ pacman -S pigz
 $ pacman -Sc
 ```
 
-## 在`~/.config`目录下创建不备份目录列表
+## 创建不备份目录列表
 ```
-$ emacs ~/.config/exclude
+$ emacs ~/backup/exclude
 ```
 加入如下内容
 ```
+/home/*
 /proc/*
 /dev/*
 /sys/*
@@ -34,15 +35,15 @@ $ emacs ~/.config/exclude
 /run/*
 /var/lock/*
 /var/run/*
-/var/lib/pacman/*
 /var/cache/pacman/pkg/*
 /lost+found
 ```
 
 ## 备份命令
-将根分区备份到home分区中的`backup/root-backup.tgz`中：
+进入`backup`目录,执行备份：
 ```
-$ sudo tar --use-compress-program=pigz -cvpf ~/backup/root-backup.tgz --exclude-from=/home/chuan/.config/exclude /
+$ cd backup
+$ sudo tar --use-compress-program=pigz -cvpf backup.tgz --exclude-from=exclude /
 ```
 
 ## 使用liveCD进入系统
@@ -53,37 +54,19 @@ $ sudo tar --use-compress-program=pigz -cvpf ~/backup/root-backup.tgz --exclude-
 # mkfs.fat -F 32 /dev/efi_system_partition
 ```
 
-## 挂载根分区和home分区
+## 挂载分区
 ```
-# mkdir /mnt/root
+# mount /dev/root_partition /mnt
 # mkdir /mnt/home
-# mount /dev/root_partition /mnt/root
 # mount /dev/home_partition /mnt/home
+# mkdir /mnt/boot
+# mount /dev/boot_partition /mnt/boot
 ```
-
-## 在liveCD中安装pigz
 
 ## 解压home分区下的根分区备份文件到根分区中
 ```
-# tar --use-compress-program=pigz -xvpf /mnt/home/chuan/backup/root-backup.tgz -C /mnt/root/
-```
-
-## 取消挂载
-```
-# umount /mnt/root
-# umount /mnt/home
-```
-
-## 删除root目录
-```
-# rm -r /mnt/root
-```
-
-## 重新按照linux结构挂载
-```
-# mount /dev/root_partition /mnt
-# mount /dev/home_partition /home
-# mount /dev/efi_partition /boot
+# cd /mnt/home/<username>/backup
+# tar --use-compress-program=pigz -xvpf backup.tgz -C /mnt
 ```
 
 ## 开启swap
